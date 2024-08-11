@@ -26,7 +26,7 @@ def run(prompt):
     xflux_pipeline = XFluxPipeline(
       model_type,
       device,
-      offload
+      offload,
       seed
     )
     if use_lora:
