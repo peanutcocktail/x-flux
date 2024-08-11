@@ -2,11 +2,7 @@ import gradio as gr
 from PIL import Image
 import os
 from src.flux.xflux_pipeline import XFluxPipeline
-def run(prompt):
-    if args.image:
-        image = Image.open(args.image)
-    else:
-        image = None
+def run(prompt, image):
 
     model_type = "flux-dev-fp8"
     device = "mps"
@@ -25,7 +21,7 @@ def run(prompt):
 
     xflux_pipeline = XFluxPipeline(model_type, device, offload, seed)
     if use_lora:
-        print('load lora:', args.lora_repo_id, args.lora_name)
+        print('load lora:', lora_repo_id, lora_name)
         xflux_pipeline.set_lora(
           None,
           lora_repo_id,
