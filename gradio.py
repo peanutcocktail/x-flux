@@ -23,12 +23,7 @@ def run(prompt):
     guidance = 3.5
     steps = 50
 
-    xflux_pipeline = XFluxPipeline(
-      model_type,
-      device,
-      offload,
-      seed
-    )
+    xflux_pipeline = XFluxPipeline(model_type, device, offload, seed)
     if use_lora:
         print('load lora:', args.lora_repo_id, args.lora_name)
         xflux_pipeline.set_lora(
@@ -45,14 +40,7 @@ def run(prompt):
           name
         )
 
-    result = xflux_pipeline(
-      prompt,
-      controlnet_image=image,
-      width=width,
-      height=height,
-      guidance=guidance,
-      num_steps=steps,
-    )
+    result = xflux_pipeline( prompt, controlnet_image=image, width=width, height=height, guidance=guidance, num_steps=steps,)
     return result
 #    if not os.path.exists(save_path):
 #        os.mkdir(save_path)
@@ -60,10 +48,6 @@ def run(prompt):
 #    result.save(os.path.join(args.save_path, f"result_{ind}.png"))
 
 
-demo = gr.Interface(
-    fn=run,
-    inputs=["text",],
-    outputs=["image"],
-)
+demo = gr.Interface( fn=run, inputs=["text",], outputs=["image"],)
 
 demo.launch()
