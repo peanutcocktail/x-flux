@@ -9,3 +9,4 @@ omegaconf
 diffusers
 sentencepiece
 gradio
+opencv-python
